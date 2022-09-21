@@ -12,40 +12,42 @@
 @section('body_data', $layoutHelper->makeBodyData())
 
 @section('body')
-    <div class="wrapper">
+    <div class="dark-mode relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+
+        @yield('content')
         {{-- Preloader Animation --}}
-        @if($layoutHelper->isPreloaderEnabled())
+        {{-- @if($layoutHelper->isPreloaderEnabled())
             @include('adminlte::partials.common.preloader')
-        @endif
+        @endif --}}
 
         {{-- Top Navbar --}}
-        @if($layoutHelper->isLayoutTopnavEnabled())
+        {{-- @if($layoutHelper->isLayoutTopnavEnabled())
             @include('adminlte::partials.navbar.navbar-layout-topnav')
         @else
             @include('adminlte::partials.navbar.navbar')
-        @endif
+        @endif --}}
 
         {{-- Left Main Sidebar --}}
-        @if(!$layoutHelper->isLayoutTopnavEnabled())
+        {{-- @if(!$layoutHelper->isLayoutTopnavEnabled())
             @include('adminlte::partials.sidebar.left-sidebar')
-        @endif
+        @endif --}}
 
         {{-- Content Wrapper --}}
-        @empty($iFrameEnabled)
+        {{-- @empty($iFrameEnabled)
             @include('adminlte::partials.cwrapper.cwrapper-default')
         @else
             @include('adminlte::partials.cwrapper.cwrapper-iframe')
-        @endempty
+        @endempty --}}
 
         {{-- Footer --}}
-        @hasSection('footer')
+        {{-- @hasSection('footer')
             @include('adminlte::partials.footer.footer')
-        @endif
+        @endif --}}
 
         {{-- Right Control Sidebar --}}
-        @if(config('adminlte.right_sidebar'))
+        {{-- @if(config('adminlte.right_sidebar'))
             @include('adminlte::partials.sidebar.right-sidebar')
-        @endif
+        @endif --}}
 
     </div>
 @stop
