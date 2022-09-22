@@ -13,42 +13,7 @@
 
 @section('body')
     <div class="dark-mode relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-
         @yield('content')
-        {{-- Preloader Animation --}}
-        {{-- @if($layoutHelper->isPreloaderEnabled())
-            @include('adminlte::partials.common.preloader')
-        @endif --}}
-
-        {{-- Top Navbar --}}
-        {{-- @if($layoutHelper->isLayoutTopnavEnabled())
-            @include('adminlte::partials.navbar.navbar-layout-topnav')
-        @else
-            @include('adminlte::partials.navbar.navbar')
-        @endif --}}
-
-        {{-- Left Main Sidebar --}}
-        {{-- @if(!$layoutHelper->isLayoutTopnavEnabled())
-            @include('adminlte::partials.sidebar.left-sidebar')
-        @endif --}}
-
-        {{-- Content Wrapper --}}
-        {{-- @empty($iFrameEnabled)
-            @include('adminlte::partials.cwrapper.cwrapper-default')
-        @else
-            @include('adminlte::partials.cwrapper.cwrapper-iframe')
-        @endempty --}}
-
-        {{-- Footer --}}
-        {{-- @hasSection('footer')
-            @include('adminlte::partials.footer.footer')
-        @endif --}}
-
-        {{-- Right Control Sidebar --}}
-        {{-- @if(config('adminlte.right_sidebar'))
-            @include('adminlte::partials.sidebar.right-sidebar')
-        @endif --}}
-
     </div>
 @stop
 
