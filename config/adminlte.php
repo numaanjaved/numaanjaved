@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>NumaanJaved</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -130,8 +130,8 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-dark',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -312,11 +312,19 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'text'        => 'Users',
+            'url'         => '',
+            'icon'        => 'far fa-fw fa-user',
             'label'       => 4,
             'label_color' => 'success',
+            'submenu'     =>  [
+                [
+                    'text'    => 'Roles',
+                    'url'     => 'admin/roles',
+                    'icon'    => 'far fa-fw fa-scroll'
+                ],
+
+            ]
         ],
         [
             'header' => 'account_settings',
@@ -344,7 +352,7 @@ return [
                 ],
                 [
                     'text'    => 'level_one',
-                    'url'     => '#',
+                    'url'     => 'admin/level',
                     'submenu' => [
                         [
                             'text' => 'level_two',

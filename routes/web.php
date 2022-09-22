@@ -20,4 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+
+Route::middleware(['middleware' => 'auth'])->group(function(){
+    Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+    Route::resource('admin/roles', App\Http\Controllers\RoleController::class)->names([
+        'index' => 'admin.roles.index',
+    ]);
+});
