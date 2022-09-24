@@ -51,10 +51,4 @@ $config = [
     striped hoverable with-buttons bordered/>
 </x-adminlte-card>
 @endsection
-{{-- @section('js')
-<script>
-    $('#table1').DataTable( {
-    searching: false
-} );
-</script>
-@endsection --}}
+
