@@ -1,6 +1,9 @@
 @extends('adminlte::page')
 @section('plugins.Datatables', 'true')
 @section('plugins.DatatablesPlugins', 'true')
+@section('title')
+Roles | Numaan Javed
+@endsection
 @section('content')
 @php
 $heads = [
@@ -22,14 +25,19 @@ $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" titl
 $config = [
     'data' => $roles,
     'order' => [[1, 'asc']],
+    'searching' => false,
     'columns' => [null, null, ['orderable' => false]],
     // 'dom' => '
     //               <"row" <"col-12" tr> >
     //               <"row" <"col-sm-12 d-flex justify-content-start" f> ><"row" <"col-sm-7" B> <"col-sm-5 d-flex justify-content-end" i> >'
 ];
 @endphp
-
-<x-adminlte-card class="container mt-4 p-4" title="Roles" theme="light" icon="fas fa-lg fa-moon">
+@section('content')
+@if(session('success'))
+    <x-adminlte-alert class="container mt-4 p-4" theme="success">{{session('success')}}</x-adminlte-alert>
+@endif
+<x-adminlte-card class="container mt-4 p-4" title="Roles" theme="dark">
+    <a href="{{ route("admin.roles.create")}}" class="float-right btn btn-primary">Add New Role</a>
     <x-adminlte-datatable id="table8" :heads="$heads" head-theme="dark" class="bg-white" :config="$config"
     striped hoverable with-buttons bordered/>
 </x-adminlte-card>

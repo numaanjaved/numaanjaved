@@ -26,5 +26,7 @@ Route::middleware(['middleware' => 'auth'])->group(function(){
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
     Route::resource('admin/roles', App\Http\Controllers\RoleController::class)->names([
         'index' => 'admin.roles.index',
+        'create' => 'admin.roles.create',
+        'store' => 'admin.roles.store',
     ]);
 });

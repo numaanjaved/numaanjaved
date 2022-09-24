@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Role;
 
@@ -27,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.roles.create');
     }
 
     /**
@@ -38,7 +38,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $request->validate([
+                'name' => ['required']
+            ]);
+            $request->merge([
+                'name' => Str::ucfirst($request->name)
+            ]) ;
+                Role::create($request->all());
+        }
+        catch(\Exception $e){
+            return back()->with('error', $e->getMessage());
+        }
+        return redirect()->route('admin.roles.index')->with('success', "Role Added Successfully");
     }
 
     /**
