@@ -1,31 +1,48 @@
 @extends('adminlte::page')
 @section('plugins.Datatables', 'true')
+@section('plugins.DatatablesPlugins', 'true')
 @section('content')
-<div class="container mt-4 p-4 border border-light">
-    <div class="row" id="heading">
-        <div class="col-12">
-            <div class="container"><h1>Roles</h1></div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row table-heading">
-            <div class="col-4 border border-light">Id</div>
-            <div class="col-4 border border-light">Name</div>
-            <div class="col-4 border border-light">Action</div>
-        </div>
-        <div class="row message">
-            <div class="col-12 border border-light">Roles are not yet made</div>
-        </div>
-        @if($roles)
-        <div class="row table-row">
+@php
+$heads = [
+    'ID',
+    'Name',
+    ['label' => 'Actions', 'no-export' => true, 'width' => 15],
+];
 
-        </div>
-        @else
-        <div class="row message">
-            <div class="col-12 border border-light">Roles are not yet made</div>
-        </div>
-        @endif
-    </div>
-</div>
+$btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                <i class="fa fa-lg fa-fw fa-pen"></i>
+            </button>';
+$btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                  <i class="fa fa-lg fa-fw fa-trash"></i>
+              </button>';
+$btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+                   <i class="fa fa-lg fa-fw fa-eye"></i>
+               </button>';
+
+$config = [
+    'data' => $roles,
+    'order' => [[1, 'asc']],
+    'columns' => [null, null, ['orderable' => false]],
+    // 'dom' => '
+    //               <"row" <"col-12" tr> >
+    //               <"row" <"col-sm-12 d-flex justify-content-start" f> ><"row" <"col-sm-7" B> <"col-sm-5 d-flex justify-content-end" i> >'
+];
+@endphp
+<x-adminlte-card title="Roles" theme="dark" icon="fas fa-lg fa-moon">
+
+<x-adminlte-datatable id="table1" :heads="$heads" head-theme="dark" class="bg-white" :config="$config"
+striped hoverable with-buttons bordered compressed/>
+
+</x-adminlte-card>
+<x-adminlte-card title="Roles" theme="dark" icon="fas fa-lg fa-moon">
+    <x-adminlte-datatable id="table8" :heads="$heads" head-theme="dark" class="bg-white" :config="$config"
+    striped hoverable with-buttons bordered/>
+</x-adminlte-card>
 @endsection
-
+{{-- @section('js')
+<script>
+    $('#table1').DataTable( {
+    searching: false
+} );
+</script>
+@endsection --}}
