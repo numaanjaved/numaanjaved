@@ -15,7 +15,6 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        $roles->makeHidden(['created_at', 'updated_at']);
         return view('admin.roles.index',[
             'roles' => $roles
         ]);
