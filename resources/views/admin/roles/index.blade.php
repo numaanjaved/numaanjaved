@@ -12,18 +12,26 @@ $heads = [
     ['label' => 'Actions', 'no-export' => true, 'width' => 15],
 ];
 
-$btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+$btnEdit = '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i>
-            </button>';
-$btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+            </a>';
+$btnDelete = '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                   <i class="fa fa-lg fa-fw fa-trash"></i>
-              </button>';
-$btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
+              </a>';
+$btnDetails = '<a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
                    <i class="fa fa-lg fa-fw fa-eye"></i>
-               </button>';
+               </a>';
+$data = [];
+foreach($roles as $role){
+    $data[] = [
+        $role->id,
+        $role->name,
+        '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>',
+    ];
+}
 
 $config = [
-    'data' => $roles,
+    'data' => $data,
     'order' => [[1, 'asc']],
     'searching' => false,
     'columns' => [null, null, ['orderable' => false]],

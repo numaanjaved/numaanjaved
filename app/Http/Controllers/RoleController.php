@@ -14,7 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::oldest()->paginate(5);
+        $roles = Role::all();
+        $roles->makeHidden(['created_at', 'updated_at']);
         return view('admin.roles.index',[
             'roles' => $roles
         ]);
@@ -48,6 +49,7 @@ class RoleController extends Controller
                 Role::create($request->all());
         }
         catch(\Exception $e){
+
             return back()->with('error', $e->getMessage());
         }
         return redirect()->route('admin.roles.index')->with('success', "Role Added Successfully");
