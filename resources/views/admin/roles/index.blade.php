@@ -12,7 +12,10 @@ $heads = [
     ['label' => 'Actions', 'no-export' => true, 'width' => 15],
 ];
 
-$btnEdit = '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+
+$data = [];
+foreach($roles as $role){
+    $btnEdit = '<a href="'.route("admin.roles.edit", $role->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i>
             </a>';
 $btnDelete = '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
@@ -21,8 +24,6 @@ $btnDelete = '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="D
 $btnDetails = '<a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
                    <i class="fa fa-lg fa-fw fa-eye"></i>
                </a>';
-$data = [];
-foreach($roles as $role){
     $data[] = [
         $role->id,
         $role->name,

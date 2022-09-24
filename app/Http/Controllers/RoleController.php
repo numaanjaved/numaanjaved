@@ -72,9 +72,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        return view('admin.roles.edit',[
+            'role' => $role
+        ]);
     }
 
     /**
@@ -84,9 +86,22 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        try{
+            $request->validate([
+                'name' => ['required']
+            ]);
+            $request->merge([
+                'name' => Str::ucfirst($request->name)
+            ]) ;
+            $role->update($request->all());
+        }
+        catch(\Exception $e){
+
+            return back()->with('error', $e->getMessage());
+        }
+        return redirect()->route('admin.roles.index')->with('success', "Role Updated Successfully");
     }
 
     /**
