@@ -28,13 +28,8 @@ $config = [
     //               <"row" <"col-sm-12 d-flex justify-content-start" f> ><"row" <"col-sm-7" B> <"col-sm-5 d-flex justify-content-end" i> >'
 ];
 @endphp
-<x-adminlte-card title="Roles" theme="dark" icon="fas fa-lg fa-moon">
 
-<x-adminlte-datatable id="table1" :heads="$heads" head-theme="dark" class="bg-white" :config="$config"
-striped hoverable with-buttons bordered compressed/>
-
-</x-adminlte-card>
-<x-adminlte-card title="Roles" theme="dark" icon="fas fa-lg fa-moon">
+<x-adminlte-card class="container mt-4 p-4" title="Roles" theme="light" icon="fas fa-lg fa-moon">
     <x-adminlte-datatable id="table8" :heads="$heads" head-theme="dark" class="bg-white" :config="$config"
     striped hoverable with-buttons bordered/>
 </x-adminlte-card>
