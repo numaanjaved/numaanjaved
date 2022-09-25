@@ -323,7 +323,11 @@ return [
                     'url'     => 'admin/roles',
                     'icon'    => 'far fa-fw fa-scroll'
                 ],
-
+                [
+                    'text'    => 'Users',
+                    'url'     => 'admin/users',
+                    'icon'    => 'far fa-fw fa-user'
+                ],
             ]
         ],
         [

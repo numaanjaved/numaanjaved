@@ -32,5 +32,13 @@ Route::middleware(['middleware' => 'auth'])->group(function(){
     ])->except([
         'update' => 'admin.roles.update'
     ]);
-    Route::POST('admin/roles/{role}/update', [App\Http\Controllers\RoleController::class, 'update'])->name('admin.roles.update');
+    Route::resource('admin/users', App\Http\Controllers\UserController::class)->names([
+        'index' => 'admin.users.index',
+        'create' => 'admin.users.create',
+        'store' => 'admin.users.store',
+        'edit' => 'admin.users.edit'
+    ])->except([
+        'update' => 'admin.users.update'
+    ]);
+    Route::POST('admin/users/{user}/update', [App\Http\Controllers\UserController::class, 'update'])->name('admin.users.update');
 });
