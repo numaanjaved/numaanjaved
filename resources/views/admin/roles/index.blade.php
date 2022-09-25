@@ -15,6 +15,7 @@ $heads = [
 
 
 $data = [];
+$count = 1;
 foreach($roles as $role){
     $btnEdit = '<a href="'.route("admin.roles.edit", $role->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i>
@@ -26,11 +27,12 @@ foreach($roles as $role){
 //                    <i class="fa fa-lg fa-fw fa-eye"></i>
 //                </a>';
     $data[] = [
-        $role->id,
+        $count,
         $role->name,
         $role->users->count(),
         '<nobr>'.$btnEdit.$btnDelete.'</nobr>',
     ];
+    ++$count;
 }
 
 $config = [

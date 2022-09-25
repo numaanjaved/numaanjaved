@@ -20,10 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
-Route::middleware(['middleware' => 'auth'])->group(function(){
-    Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::middleware(['auth', 'admin'])->group(function(){
+    Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
     Route::resource('admin/roles', App\Http\Controllers\RoleController::class)->names([
         'index' => 'admin.roles.index',
         'create' => 'admin.roles.create',
@@ -32,6 +30,8 @@ Route::middleware(['middleware' => 'auth'])->group(function(){
     ])->except([
         'update' => 'admin.roles.update'
     ]);
+    Route::POST('admin/roles/{role}/update', [App\Http\Controllers\UserController::class, 'update'])->name('admin.roles.update');
+
     Route::resource('admin/users', App\Http\Controllers\UserController::class)->names([
         'index' => 'admin.users.index',
         'create' => 'admin.users.create',
@@ -41,4 +41,8 @@ Route::middleware(['middleware' => 'auth'])->group(function(){
         'update' => 'admin.users.update'
     ]);
     Route::POST('admin/users/{user}/update', [App\Http\Controllers\UserController::class, 'update'])->name('admin.users.update');
+});
+
+Route::middleware(['auth', 'member'])->group(function(){
+    Route::get('member/home', [App\Http\Controllers\HomeController::class, 'index'])->name('member.home');
 });

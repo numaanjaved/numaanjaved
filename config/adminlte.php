@@ -306,17 +306,16 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         [
             'text'        => 'Users',
             'url'         => '',
+            'can'         => 'admin-home',
             'icon'        => 'far fa-fw fa-user',
-            'label'       => 4,
-            'label_color' => 'success',
             'submenu'     =>  [
                 [
                     'text'    => 'Roles',

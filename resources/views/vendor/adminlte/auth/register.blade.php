@@ -35,6 +35,25 @@
             @enderror
         </div>
 
+        {{-- Role field --}}
+        <div class="input-group mb-3">
+            <select type="text" name="role" class="form-control @error('role') is-invalid @enderror"
+                   value="{{ old('role') }}" autofocus>
+                <option value="" selected disabled>Select Role</option>
+                <option value="3">Member</option>
+            </select>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('role')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"

@@ -51,6 +51,13 @@ class User extends Authenticatable
         }
         return $isAdmin;
     }
+    public function isMember(){
+        $isAdmin = false;
+        if($this->roles->where('name', 'Member')->first()){
+            $isAdmin = true;
+        }
+        return $isAdmin;
+    }
     // public function adminlte_image(){
     //     return storage_path().'//';
     // }
