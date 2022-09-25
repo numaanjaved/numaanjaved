@@ -9,7 +9,8 @@ Roles | Numaan Javed
 $heads = [
     'ID',
     'Name',
-    ['label' => 'Actions', 'no-export' => true, 'width' => 15],
+    'Count',
+    ['label' => 'Actions', 'no-export' => true, 'width' => 20],
 ];
 
 
@@ -18,7 +19,7 @@ foreach($roles as $role){
     $btnEdit = '<a href="'.route("admin.roles.edit", $role->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i>
             </a>';
-$btnDelete = '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+    $btnDelete = '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                   <i class="fa fa-lg fa-fw fa-trash"></i>
               </a>';
 // $btnDetails = '<a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
@@ -27,6 +28,7 @@ $btnDelete = '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="D
     $data[] = [
         $role->id,
         $role->name,
+        $role->users->count(),
         '<nobr>'.$btnEdit.$btnDelete.'</nobr>',
     ];
 }
@@ -35,7 +37,7 @@ $config = [
     'data' => $data,
     'order' => [[1, 'asc']],
     'searching' => false,
-    'columns' => [null, null, ['orderable' => false]],
+    'columns' => [null, null, null, ['orderable' => false]],
     // 'dom' => '
     //               <"row" <"col-12" tr> >
     //               <"row" <"col-sm-12 d-flex justify-content-start" f> ><"row" <"col-sm-7" B> <"col-sm-5 d-flex justify-content-end" i> >'
