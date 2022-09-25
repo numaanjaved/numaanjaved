@@ -291,11 +291,11 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -332,22 +332,26 @@ return [
         [
             'header' => 'account_settings',
             'topnav_user' => true,
+            'can' => 'admin-home'
         ],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
             'topnav_user' => true,
+            'can' => 'admin-home'
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
             'topnav_user' => true,
+            'can' => 'admin-home'
         ],
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
+            'can' => 'admin-home',
             'submenu' => [
                 [
                     'text' => 'level_one',
@@ -383,21 +387,24 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'labels', 'can' => 'admin-home'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
             'url'        => '#',
+            'can' => 'admin-home'
         ],
         [
             'text'       => 'warning',
             'icon_color' => 'yellow',
             'url'        => '#',
+            'can'       => 'admin-home'
         ],
         [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
+            'can'       => 'admin-home'
         ],
     ],
 

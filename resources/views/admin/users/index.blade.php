@@ -35,7 +35,7 @@ foreach($users as $user){
 
 $config = [
     'data' => $data,
-    'order' => [[1, 'asc']],
+    'order' => [[1, 'desc']],
     'searching' => false,
     'columns' => [null, null, null, ['orderable' => false]],
     // 'dom' => '
