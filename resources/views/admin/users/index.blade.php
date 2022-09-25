@@ -2,21 +2,21 @@
 @section('plugins.Datatables', 'true')
 @section('plugins.DatatablesPlugins', 'true')
 @section('title')
-Roles | Numaan Javed
+Users | Numaan Javed
 @endsection
 @section('content')
 @php
 $heads = [
     'ID',
     'Name',
-    'Count',
+    'Position',
     ['label' => 'Actions', 'no-export' => true, 'width' => 20],
 ];
 
 
 $data = [];
 foreach($users as $user){
-    $btnEdit = '<a href="'.route("admin.roles.edit", $user->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+    $btnEdit = '<a href="'.route("admin.users.edit", $user->id).'" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                 <i class="fa fa-lg fa-fw fa-pen"></i>
             </a>';
     $btnDelete = '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
@@ -28,7 +28,7 @@ foreach($users as $user){
     $data[] = [
         $user->id,
         $user->name,
-        $user->roles->count(),
+        $user->isAdmin() ? 'Admin' : 'Member',
         '<nobr>'.$btnEdit.$btnDelete.'</nobr>',
     ];
 }
@@ -47,8 +47,8 @@ $config = [
 @if(session('success'))
     <x-adminlte-alert class="container mt-4 p-4" theme="success">{{session('success')}}</x-adminlte-alert>
 @endif
-<x-adminlte-card class="container mt-4 p-4" title="Roles" theme="dark">
-    <a href="{{ route("admin.roles.create")}}" class="float-right btn btn-primary">Add New Role</a>
+<x-adminlte-card class="container mt-4 p-4" title="Users" theme="dark">
+    <a href="{{ route("admin.users.create")}}" class="float-right btn btn-primary">Add New User</a>
     <x-adminlte-datatable id="table8" :heads="$heads" head-theme="dark" class="bg-white" :config="$config"
     striped hoverable with-buttons bordered/>
 </x-adminlte-card>

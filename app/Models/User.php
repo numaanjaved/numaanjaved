@@ -44,6 +44,13 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class);
     }
+    public function isAdmin(){
+        $isAdmin = false;
+        if($this->roles->where('name', 'Admin')->first()){
+            $isAdmin = true;
+        }
+        return $isAdmin;
+    }
     // public function adminlte_image(){
     //     return storage_path().'//';
     // }
