@@ -40,7 +40,7 @@
             <select type="text" name="role" class="form-control @error('role') is-invalid @enderror"
                    value="{{ old('role') }}" autofocus>
                 <option value="" selected disabled>Select Role</option>
-                <option value="3">Member</option>
+                <option value="2">Member</option>
             </select>
             <div class="input-group-append">
                 <div class="input-group-text">

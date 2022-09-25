@@ -23,14 +23,12 @@ class UserSeeder extends Seeder
             'email'     => $email,
             'password'  => Hash::make('admin123')
         ];
-        $user = new User();
-        $user->create($firstAdminUser);
+        User::factory()->create($firstAdminUser);
 
         $adminId = Role::where('name', 'Admin')->first()->id;
         $memberId = Role::where('name', 'Member')->first()->id;
         User::all()->last()->roles()->attach($adminId);
         User::factory()->count(1)->create();
-        $user = new User();
         User::all()->last()->roles()->attach($memberId);
     }
 }
