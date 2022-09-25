@@ -22,7 +22,7 @@
                         @elseif(auth()->user()->isMember())
                             <a href="{{  route('member.home') }}" class="text-sm text-light-700 dark:text-light-500 underline">Home</a>
                         @else
-                            <a href="{{ route('logout') }}" class="text-sm text-light-700 dark:text-light-500 underline">Log Out</a>
+                            <span>There is some error in Authentication</span>
                         @endif
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-light-700 dark:text-light-500 underline">Log in</a>
