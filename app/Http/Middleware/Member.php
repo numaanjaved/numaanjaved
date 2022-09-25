@@ -19,6 +19,9 @@ class Member
         if($request->user()->isMember() == true){
             return $next($request);
         }
+        if($request->user()->isAdmin() == true){
+            return redirect()->back()->with('error', 'The area you are trying to access is forbidden');
+        }
         return route('login');
     }
 }
